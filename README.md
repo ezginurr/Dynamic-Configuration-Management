@@ -7,7 +7,7 @@ This project is a Dynamic Configuration Management System developed with ASP.NET
 - ConfigurationLibrary.Tests      
 
 ### _Technologies Used_
-- SP.NET Core MVC (.NET 8)
+- ASP.NET Core MVC (.NET 8)
 - MongoDB (via Docker)
 - xUnit for Testing
 - Bootstrap for UI
