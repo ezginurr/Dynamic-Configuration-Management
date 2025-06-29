@@ -1,0 +1,46 @@
+# Build outputs
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / VSCode / JetBrains
+.idea/
+.vscode/
+.vs/
+
+# ASP.NET Core secrets
+secrets.json
+
+# Docker files
+**/Dockerfile
+**/docker-compose.override.yml
+
+# Node/npm (if ever used in wwwroot)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Logs
+*.log
+
+# Test results
+TestResults/
+
+# Publish outputs
+publish/
+*.publish.xml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Others
+.env
+.env.*
+*.swp

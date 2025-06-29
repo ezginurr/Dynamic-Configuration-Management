@@ -1,0 +1,72 @@
+﻿@model List<ConfigurationLibrary.Models.ConfigurationItem>
+
+@{
+    ViewData["Title"] = "Configuration List";
+}
+
+<h2>Configuration List</h2>
+
+@* <a asp-controller="Configuration" asp-action="Create" class="btn btn-primary">Add New Configuration</a> *@
+<p class="text-end">
+    <a asp-controller="Configuration" asp-action="Create" class="btn btn-outline-primary">
+        <i class="bi bi-plus-lg"></i> Add New Configuration
+    </a>
+</p>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-info mt-3">
+        No configuration records found.
+    </div>
+}
+else
+{
+    <div class="mb-3">
+        <label for="searchBox" class="form-label">Search by Name</label>
+        <input type="text" id="searchBox" class="form-control" placeholder="Enter config name..." onkeyup="filterTable()" />
+    </div>
+
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Value</th>
+                <th>Is Active</th>
+                <th>Application Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Type</td>
+                    <td>@item.Value</td>
+                    <td>@item.IsActive</td>
+                    <td>@item.ApplicationName</td>
+                    <td>
+                        <a class="btn btn-sm btn-warning" href="/Configuration/Edit/@item.Id">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<script>
+    function filterTable() {
+        const input = document.getElementById("searchBox");
+        const filter = input.value.toLowerCase();
+        const rows = document.querySelectorAll("table tbody tr");
+
+        rows.forEach(row => {
+            const nameCell = row.querySelector("td:first-child");
+            if (!nameCell) return;
+
+            const name = nameCell.textContent.toLowerCase();
+            row.style.display = name.includes(filter) ? "" : "none";
+        });
+    }
+</script>
